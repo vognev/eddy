@@ -2,7 +2,7 @@
 (function($){
     
     // eddy constructor
-    function editor(root, options){
+    function Editor(root, options){
 
         if (
             $(root).get(0).nodeName != 'TEXTAREA' ||
@@ -42,9 +42,26 @@
 
         var $editable = $('<div class="canvas"/>').prependTo($wrapper)
             .html($root.val() ? $root.val() : '<br>'),
-
             editable = $editable.get(0);
-           
+
+        $editable.bind("keypress", function(e){
+            if (e.which == 13) {
+                if (window.getSelection) {
+                    var selection   = window.getSelection(),
+                        range       = selection.getRangeAt(0),
+                        br          = document.createElement("br");
+                    range.deleteContents();
+                    range.insertNode(br);
+                    range.setStartAfter(br);
+                    range.setEndAfter(br);
+                    range.collapse(false);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    return false;
+                }
+            }
+        });
+
         var $toolbar = $(
             '<div class="toolbar">'+
                 '<table cellspacing=0 cellpadding=0>'+
@@ -375,13 +392,13 @@
 
         this.sync = function(){
             $root.val($editable.html());
-        }
+        };
 
         this.destroy = function(){
             this.sync();
             $root.insertBefore($wrapper).show();
             $wrapper.remove();
-        }
+        };
 
         return this;
     }
@@ -389,11 +406,11 @@
     $.fn.eddy = function(options){
 
         if (this.length == 1){
-            return new editor(this[0], options);
+            return new Editor(this[0], options);
         }
 
         return this.each(function(){
-            new editor(this, options);
+            new Editor(this, options);
         });
     }
 

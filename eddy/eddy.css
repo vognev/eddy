@@ -6,12 +6,15 @@
 .eddy .canvas{
     border: 1px solid #BDC7D8;
     background-color: #fff;
-    min-height: 60px;
-    height:auto !important;
-    height:60px;
+    height: 300px;
     padding: 5px;
     outline: none;
     white-space: pre-wrap;
+    overflow: auto;
+}
+
+textarea.wysiwyg {
+    height: 300px;
 }
 
 .eddy .canvas br{
