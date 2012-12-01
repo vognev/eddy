@@ -51,7 +51,20 @@
             $(function(){
                 $('textarea').each(function(){
                     $(this).eddy({
-                        'width': $(this).width()
+                        toolbar: [
+                            'bold', 'italic', 'underline', 'separator',
+                            'strikethrough', 'cite', 'separator',
+                            'list_bullets', 'list_numbers', 'separator',
+                            'link', 'unlink', 'separator',
+                            'image', 'separator',
+                            {
+                                tooltip:    'Custom button',
+                                name:       'custom',
+                                command:    function(eddy) {
+                                    alert('Custom button');
+                                }
+                            }
+                        ]
                     });
                 });
 
@@ -65,8 +78,9 @@
             Simple Demonstration of eddy
         </p>
 
-        <form method="POST" action="" onsubmit="$(this).find('textarea').eddy('sync'); return true;">
+        <form method="POST" action="" onsubmit="$(this).find('textarea').eddy('sync'); return true;" style="width: 420px; background: none repeat scroll 0 0 #EDEFF4; padding: 5px;">
             <textarea name="text1" cols="40" rows="10"><?php if($_POST && $_POST['text1']) { echo htmlspecialchars($_POST['text1']); } else { ?>test text<?php } ?></textarea>
+            <br/>
             <input type="submit"/>
         </form>
         <?php if ($_POST) var_dump($_POST); ?>

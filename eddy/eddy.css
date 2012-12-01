@@ -1,10 +1,9 @@
 .eddy{
-    background: none repeat scroll 0 0 #EDEFF4;
-    padding: 5px;
+    /* background: none repeat scroll 0 0 #EDEFF4; padding: 5px; */
 }
 
 .eddy .canvas{
-    border: 1px solid #BDC7D8;
+    border: 1px solid #B6B6B6;
     background-color: #fff;
     height: 300px;
     padding: 5px;
@@ -22,15 +21,14 @@ textarea.wysiwyg {
 }
 
 .eddy .toolbar{
-    padding-bottom: 5px;
     clear: both;
 }
 
 .eddy .toolbar table{
-    height: 20px;
+    border-collapse: collapse;
 }
 
-.eddy .toolbar table td{
+.eddy .toolbar table td {
     width: 20px; height: 20px;
     display: block; float: left;
     position: relative;
@@ -38,6 +36,8 @@ textarea.wysiwyg {
     border-left: 1px solid #999;
     border-bottom: 1px solid #999;
     background: url("img/panel-bg.gif") repeat-x;
+    margin-bottom: 2px;
+    padding: 0;
 }
 
 .eddy .toolbar table td.separator{
@@ -89,6 +89,7 @@ textarea.wysiwyg {
 /* dialog */
 
 .eddy .dialog{
+    padding-top: 5px;
     padding-bottom: 5px;
 }
 
@@ -96,9 +97,8 @@ textarea.wysiwyg {
     text-align: right; padding-top: 1px;
 }
 
-.eddy .dialog .text{
-    width: 100%;
-    border: 1px solid #BDC7D8;
+.eddy .dialog .eddy_wrap {
+    border: 1px solid #B6B6B6;
     background-color: #fff;
     padding: 2px 1px;
     font-size: 11px;
@@ -106,13 +106,19 @@ textarea.wysiwyg {
     margin-bottom: 2px;
 }
 
+.eddy .dialog .text{
+    width: 100%;
+    border: 0; padding: 0; background-color: #fff;
+}
+
 .eddy .dialog .button{
-    margin-left: 2px;
+    margin-left: 3px;
     font-size: 11px;
     font-family: Tahoma, sans-serif;
     border: 1px solid #999;
     background: transparent url('img/panel-bg.gif') repeat-x;
-    padding: 2px 1px;
+    padding: 0px 2px;
+    border-radius: 3px;
 }
 
 /* buttons */
